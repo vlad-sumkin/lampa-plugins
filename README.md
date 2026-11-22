@@ -1,7 +1,7 @@
 <div align="center">
 
 # 🎬 Lampa Plugins Collection
-### Премиальная коллекция плагинов для медиацентра [Lampa](https://lampa.mx)
+### Коллекция плагинов для медиацентра [Lampa](https://lampa.mx)
 
 [![Lampa Compatible](https://img.shields.io/badge/Lampa-v2.0%2B-e50914?style=for-the-badge&logo=playstation&logoColor=white)](https://lampa.mx)
 [![LG webOS](https://img.shields.io/badge/LG%20webOS-Tested%20%26%20Working-a50034?style=for-the-badge&logo=lg&logoColor=white)](https://github.com/vlad-sumkin/lampa-plugins)
