@@ -212,7 +212,8 @@
         var limit = parseInt(Lampa.Storage.get('frames_limit', '24'), 10) || 24;
         var quality = Lampa.Storage.get('frames_quality', 'w780'); // w780 or w500
 
-        var url = Lampa.TMDB.api(type + '/' + id + '/images') + '?api_key=' + Lampa.TMDB.key();
+        var u = type + '/' + id + '/images?api_key=' + Lampa.TMDB.key();
+        var url = Lampa.TMDB.api(u);
 
         $.ajax({
             url: url,
@@ -299,8 +300,9 @@
 
     // Fallback search in TMDB by title & year
     function searchTmdbFallback(query, year, onResult) {
-        var sUrl = Lampa.TMDB.api('search/multi') + '?api_key=' + Lampa.TMDB.key() + '&query=' + encodeURIComponent(query);
-        if (year) sUrl += '&year=' + encodeURIComponent(year);
+        var u = 'search/multi?api_key=' + Lampa.TMDB.key() + '&query=' + encodeURIComponent(query);
+        if (year) u += '&year=' + encodeURIComponent(year);
+        var sUrl = Lampa.TMDB.api(u);
 
         $.ajax({
             url: sUrl,
@@ -532,14 +534,12 @@
                 if (insertIdx >= 0 && comp.items) {
                     line.insertBefore($(comp.items[insertIdx].render()));
                     comp.items.splice(insertIdx, 0, item);
-                    if (comp.rows) comp.rows.splice(insertIdx, 0, ['frames', {}]);
                     if (comp.active >= insertIdx) comp.active++;
                 } else if (comp.items) {
                     var container = scroll.render().find('.scroll__body').first();
                     if (!container.length) container = scroll.render();
                     container.append(line);
                     comp.items.push(item);
-                    if (comp.rows) comp.rows.push(['frames', {}]);
                 } else {
                     var container = scroll.render().find('.scroll__body').first();
                     if (!container.length) container = scroll.render();
